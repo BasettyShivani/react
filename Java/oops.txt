@@ -1,0 +1,286 @@
+OOPs Concepts Assignment
+
+### Problem 1: Class and Object
+
+import java.util.Scanner;
+
+class Car {
+    String brand;
+    String model;
+    int year;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String brand = sc.next();
+        String model = sc.next();
+        int year = sc.nextInt();
+
+        Car c = new Car();
+        c.brand = brand;
+        c.model = model;
+        c.year = year;
+
+        System.out.println("Brand: " + c.brand);
+        System.out.println("Model: " + c.model);
+        System.out.println("Year: " + c.year);
+    }
+}
+
+
+input:  
+Toyota Corolla 2022  
+Output:  
+Brand: Toyota  
+Model: Corolla  
+Year: 2022 
+
+
+### Problem 2: Encapsulation
+
+import java.util.Scanner;
+
+class BankAccount {
+    private String account_number;
+    private int balance;
+
+    public void setAccountNumber(String account_number) {
+        this.account_number = account_number;
+    }
+
+    public void setBalance(int balance) {
+        if (balance >= 0) {
+            this.balance = balance;
+        }
+    }
+
+    public String getAccountNumber() {
+        return account_number;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String acc = sc.next();
+        int bal = sc.nextInt();
+
+        BankAccount b = new BankAccount();
+        b.setAccountNumber(acc);
+        b.setBalance(bal);
+
+        System.out.println("Account Number: " + b.getAccountNumber());
+        System.out.println("Balance: " + b.getBalance());
+    }
+}
+ 
+Input:  
+123456789 5000  
+Output:  
+Account Number: 123456789  
+Balance: 5000 
+
+### Problem 3: Inheritance
+
+class Animal {
+    void make_sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    void make_sound() {
+        System.out.println("Bark");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.make_sound();
+    }
+}
+
+Output:  
+Bark 
+
+### Problem 4: Polymorphism
+import java.util.Scanner;
+
+class Shape {
+    double area() {
+        return 0;
+    }
+}
+
+class Circle extends Shape {
+    int r;
+    Circle(int r) {
+        this.r = r;
+    }
+    double area() {
+        return 3.14 * r * r;
+    }
+}
+
+class Rectangle extends Shape {
+    int l, w;
+    Rectangle(int l, int w) {
+        this.l = l;
+        this.w = w;
+    }
+    double area() {
+        return l * w;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String s1 = sc.next();
+        int r = sc.nextInt();
+        Circle c = new Circle(r);
+        System.out.println("Area of Circle: " + c.area());
+
+        String s2 = sc.next();
+        int l = sc.nextInt();
+        int w = sc.nextInt();
+        Rectangle rec = new Rectangle(l, w);
+        System.out.println("Area of Rectangle: " + rec.area());
+    }
+}
+nput:  
+Circle 5  
+Rectangle 4 6  
+Output:  
+Area of Circle: 78.5  
+Area of Rectangle: 24  
+
+### Problem 5: Abstraction
+abstract class Vehicle {
+    abstract void start();
+}
+
+class Car extends Vehicle {
+    void start() {
+        System.out.println("Car is starting...");
+    }
+}
+
+class Bike extends Vehicle {
+    void start() {
+        System.out.println("Bike is starting...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car c = new Car();
+        Bike b = new Bike();
+        c.start();
+        b.start();
+    }
+}
+Output:  
+Car is starting...  
+Bike is starting...  
+
+
+
+
+
+Exceptions Assignment
+### Problem: Understanding Runtime Exception
+
+
+import java.util.Scanner;
+
+public class ArithmeticExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter numerator: ");
+            int num = sc.nextInt();
+
+            System.out.print("Enter denominator: ");
+            int den = sc.nextInt();
+
+            int result = num / den;
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero is not allowed.");
+        }
+    }
+}
+
+Input:  
+Enter numerator: 10  
+Enter denominator: 0  
+Output:  
+Error: Division by zero is not allowed
+
+
+
+Threads Assignment
+### Problem: Multi-threading and Synchronization
+
+class BankAccount {
+    private int balance;
+
+    public BankAccount(int balance) {
+        this.balance = balance;
+    }
+
+    public synchronized void withdraw(int amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawal of " + amount + " successful. Remaining balance: " + balance);
+        } else {
+            System.out.println("Insufficient balance for withdrawal of " + amount);
+        }
+    }
+}
+
+class UserThread extends Thread {
+    BankAccount account;
+    int amount;
+
+    public UserThread(BankAccount account, int amount) {
+        this.account = account;
+        this.amount = amount;
+    }
+
+    public void run() {
+        account.withdraw(amount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount(1000);
+
+        int[] withdrawals = {300, 500, 400};
+
+        for (int amount : withdrawals) {
+            new UserThread(account, amount).start();
+        }
+    }
+}
+
+Input:  
+Initial Balance: 1000  
+Withdrawals: 300, 500, 400  
+Output:  
+Withdrawal of 300 successful. Remaining balance: 700  
+Withdrawal of 500 successful. Remaining balance: 200  
+Insufficient balance for withdrawal of 400 
+
+
+

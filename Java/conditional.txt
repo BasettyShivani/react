@@ -1,0 +1,133 @@
+1 compute area of rectangle
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long L = sc.nextLong();
+        long B = sc.nextLong();
+        if (L > 0 && B > 0)
+            System.out.println(L * B);
+    }
+}
+
+output:
+5
+8
+
+40
+
+
+2 Triangle validator 
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long A = sc.nextLong();
+        long B = sc.nextLong();
+        long C = sc.nextLong();
+        if (A + B > C && A + C > B && B + C > A)
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+    }
+}
+
+output:
+4 3 5
+Yes
+
+3 the missing number
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        boolean[] seen = new boolean[101];
+        for(int i = 0; i < 99; i++) {
+            int x = sc.nextInt();
+            seen[x] = true;
+        }
+        for(int i = 1; i <= 100; i++) {
+            if(!seen[i]) {
+                System.out.println(i);
+                break;
+            }
+        }
+    }
+}
+
+output:
+12 15 9 1 71 77 81 29 70 19 11 83 56 2 57 53 68 99 82 100 22 10 51 40 34 98 80 38 39 89 94 4 26 64 45 8 90 24 93 33 21 7 49 88 5 28 55 67 65 50 32 58 6 37 46 42 20 44 41 3 78 76 73 16 31 85 91 54 60 47 97 43 84 17 35 69 13 30 61 79 72 48 23 66 52 27 62 87 63 18 75 96 14 86 95 74 25 59 36
+92
+
+4  Number reverse
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+        long rev = 0;
+        boolean neg = n < 0;
+        if(neg) n = -n;
+        while(n > 0){
+            rev = rev * 10 + n % 10;
+            n /= 10;
+        }
+        if(neg) rev = -rev;
+        System.out.println(rev);
+    }
+}
+
+Output:
+1344
+
+4431
+
+
+5 compute N
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int fact = 1;
+
+        for (int i = 1; i <= n; i++) {
+            fact = fact * i;
+        }
+
+        System.out.println(fact);
+    }
+}
+output:
+5
+120
+
+6 Natural numbers sum 
+
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sum = 0;
+
+        for (int i = 1; i <= n; i++) {
+            sum += i;
+        }
+
+        System.out.println(sum);
+    }
+}
+
+output:
+4
+10
+

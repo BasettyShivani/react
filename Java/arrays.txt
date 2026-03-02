@@ -1,0 +1,130 @@
+Question 2: Count Distinct Numbers
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < N; i++) {
+            set.add(sc.nextInt());
+        }
+
+        System.out.println(set.size());
+    }
+}
+output:
+5
+1 2 1 3 1
+3
+
+Question 3: Find Maximum Element**
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int[] ar = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            ar[i] = sc.nextInt();
+        }
+
+        int max = ar[0];
+
+        for (int i = 1; i < N; i++) {
+            if (ar[i] > max) {
+                max = ar[i];
+            }
+        }
+
+        System.out.println(max);
+    }
+}
+output:
+
+5
+-2 -19 8 15 4
+15
+  Question 4:Sum of Odd Elements
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int sum = 0;
+
+        for (int i = 0; i < N; i++) {
+            int x = sc.nextInt();
+            if (x % 2 != 0) {
+                sum += x;
+            }
+        }
+
+        System.out.println(sum);
+    }
+}
+
+output:
+5
+6 9 8 4 3
+12
+
+Question 5: Find Duplicate Element
+    
+
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int[] ar = new int[N];
+
+        for (int i = 0; i < N; i++) {
+            ar[i] = sc.nextInt();
+        }
+
+        int duplicate = -1;
+
+        for (int i = 0; i < N; i++) {
+            for (int j = i + 1; j < N; j++) {
+                if (ar[i] == ar[j]) {
+                    duplicate = ar[i];
+                    break;
+                }
+            }
+            if (duplicate != -1) {
+                break;
+            }
+        }
+
+        System.out.println(duplicate);
+    }
+}
+
+output:
+ 
+
+6
+5 4 10 9 21 10
+10
+
+
+
+
